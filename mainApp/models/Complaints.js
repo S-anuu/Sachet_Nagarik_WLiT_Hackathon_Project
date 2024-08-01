@@ -1,14 +1,18 @@
-var mongoose = require('mongoose')
+// /home/anuuu/Documents/Sachet_Nagarik_Final/Backend/mainApp/models/Complaints.js
 
-const ComplaintSchema = mongoose.Schema({
-    title : String,
-    postedBy : String,
-    topic: {
-        type : String,
-        enum : ['Transportation', 'Women Rights', 'Electricity', 'Drinking Water', 'Environment', 'Pollution', 'Natural Disasters']
-    },
-    description : String,
-    postedAt : { type : Date, default : Date.now }
-})
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-module.exports = mongoose.model('Complaints', ComplaintSchema)
+const complaintSchema = new Schema({
+  title: String,
+  author: String,
+  description: String,
+  genre: String,
+  supportUsers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  oppositionUsers: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  supportCount: { type: Number, default: 0 },
+  oppositionCount: { type: Number, default: 0 },
+});
+
+const Complaints = mongoose.model('Complaints', complaintSchema);
+module.exports = Complaints;
