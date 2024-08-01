@@ -1,0 +1,127 @@
+.group-34090,
+.group-34090 * {
+  box-sizing: border-box;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.group-34090 {
+  position: relative;
+}
+.petition {
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #5d7783;
+  border-width: 4px;
+  padding: 100px 30px 100px 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  row-gap: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 288px;
+  height: 139px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.petitions {
+  color: #1e1c1c;
+  text-align: left;
+  font-family: "Roboto-ExtraBold", sans-serif;
+  font-size: 47px;
+  font-weight: 800;
+  position: relative;
+}
+.complaints {
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #5d7783;
+  border-width: 4px;
+  padding: 100px 30px 100px 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  row-gap: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 288px;
+  height: 139px;
+  position: absolute;
+  left: 322px;
+  top: 0px;
+}
+.queries {
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #5d7783;
+  border-width: 4px;
+  padding: 100px 30px 100px 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  row-gap: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 288px;
+  height: 139px;
+  position: absolute;
+  left: 644px;
+  top: 0px;
+}
+.queries2 {
+  color: #1e1c1c;
+  text-align: left;
+  font-family: "Roboto-Black", sans-serif;
+  font-size: 47px;
+  font-weight: 900;
+  position: relative;
+}
+.polls {
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #5d7783;
+  border-width: 4px;
+  padding: 100px 30px 100px 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  row-gap: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 288px;
+  height: 139px;
+  position: absolute;
+  left: 966px;
+  top: 0px;
+}
+.polls2 {
+  color: #1e1c1c;
+  text-align: left;
+  font-family: "Roboto-Black", sans-serif;
+  font-size: 47px;
+  font-weight: 900;
+  position: relative;
+}
+.community {
+  border-radius: 50px;
+  border-style: solid;
+  border-color: #5d7783;
+  border-width: 4px;
+  width: 1254px;
+  height: 139px;
+  position: absolute;
+  left: 0px;
+  top: 169px;
+  overflow: hidden;
+}
+.community-event {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Black", sans-serif;
+  font-size: 47px;
+  font-weight: 900;
+  position: absolute;
+  left: 440px;
+  top: 42px;
+}

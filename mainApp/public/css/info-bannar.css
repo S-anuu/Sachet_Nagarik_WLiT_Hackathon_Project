@@ -1,12 +1,14 @@
 .info-bannar,
 .info-bannar * {
   box-sizing: border-box;
+  
 }
 .info-bannar {
   background: #5d7783;
   padding: 0px 24px 0px 24px;
   display: flex;
   flex-direction: column;
+
   gap: 10px;
   row-gap: 0px;
   align-items: flex-start;
@@ -31,7 +33,7 @@
   position: static;
 }
 .rectangle-1289 {
-  background: #d7d96a;
+  background: #CCE0DC;
   width: 225px;
   height: 42px;
   position: absolute;
