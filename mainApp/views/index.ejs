@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/info-bannar.css">
   <link rel="stylesheet" href="/css/growing.css">
-
 </head>
 
 <body>
@@ -25,14 +24,13 @@
         <img src="image/logo-name0.png.png" alt="">
       </div>
 
-
       <div class="box">
-
         <input type="text" placeholder=" Search Bar">
-
       </div>
+
       <div class="button">
-        <button class="button">Sign In</button>
+        <!-- Updated Sign In Button with custom class for styling and id for JavaScript -->
+        <button id="signInButton" class="btn btn-signin">Sign In</button>
       </div>
     </div>
 
@@ -46,9 +44,7 @@
     <div class="info-bannar">
       <div class="frame-33989">
         <div class="group-34080">
-          
           <img class="rectangle-1290" src="/images/Rectangle 1290.png" />
-
           <img class="rectangle-1290" src="/images/Rectangle 1290.png" />
           <div class="group-34079">
             <div class="civic">CIVIC</div>
@@ -60,12 +56,9 @@
             <div class="sachet-nagarik">SACHET NAGARIK</div>
             <div class="engage-report-resolve">Engage.Report.Resolve</div>
           </div>
-
         </div>
-
       </div>
     </div>
-
 
     <div class="options">
       <div class="rectangle-1291"></div>
@@ -106,7 +99,6 @@
         </div>
       </div>
     </div>
-    
 
     <footer class="footer-1">
       <div class="footer-content">
@@ -115,9 +107,7 @@
       <div class="footer-content">
         <h4>Quick Links</h4>
         <li><a href="/">Home</a></li>
-
         <li><a href="/about-us">About us</a></li>
-
         <li><a href="/contact-us">Contact us</a></li>
       </div>
       <div class="footer-content">
@@ -129,6 +119,14 @@
         </div>
       </div>
     </footer>
+
+    <!-- Add JavaScript at the end of the body -->
+    <script>
+      document.getElementById('signInButton').addEventListener('click', function() {
+        window.location.href = '/users/login'; // Redirect to login page
+      });
+    </script>
+  </header>
 </body>
 
 </html>

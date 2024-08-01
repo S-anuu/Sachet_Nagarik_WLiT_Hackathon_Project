@@ -20,10 +20,15 @@ router.get('/queries', async function(req, res, next) {
     res.render('queries', { title: 'Sachet Nagarik', querieslist: queries });
 });
 
-router.get('/complaints', async function(req, res, next) {
-    const complaints = await Complaints.find()
-    res.render('complaints', { title: 'Sachet Nagarik', complaintslist: complaints });
-});
+router.get('/complaints', async (req, res) => {
+    try {
+      const complaints = await Complaints.find(); // Fetch complaints from the database
+      res.render('complaints', { complaints }); // Pass complaints to the view
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server Error');
+    }
+  });
 
 router.get('/about-us', function(req, res, next) {
     res.render('aboutUs');

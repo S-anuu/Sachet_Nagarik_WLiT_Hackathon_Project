@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose')
+const session = require('express-session')
+const flash = require('connect-flash')
+const passport = require('passport')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,9 +17,25 @@ var queriesRouter = require('./routes/queries')
 
 var app = express();
 
-mongoose.connect('mongodb+srv://anuusapkota10:ow7d3ZyV6CpN0SHe@cluster0.3m1dv67.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(( )=> {
+mongoose.connect('mongodb+srv://anuusapkota10:ow7d3ZyV6CpN0SHe@cluster0.3m1dv67.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(( )=> {
   console.log("Connected to db")
 })
+
+// // Passport configuration
+require('./config/passport');
+
+
+app.use(session({
+  secret: 'yourSecretKey',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false })) 
@@ -38,6 +57,7 @@ app.use('/', indexRouter);
 app.use('/queries', queriesRouter);
 app.use('/petitions', petitionsRouter )
 app.use('/complaints', complaintsRouter )
+app.use('/users', usersRouter )
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
