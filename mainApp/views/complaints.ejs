@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaints</title>
+    <link rel="stylesheet" href="/css/complaints.css">
+  </head>
+  <body>
+    <main class="container">
+      <h2>Complaints</h2>
+      <section class="add-complain">
+        <button>
+          <span>+</span>
+          Add complain
+        </button>
+      </section>
+      <section class="complain-wrapper">
+        <% complaints.forEach(function(complaint) { %>
+          <div class="complain">
+            <div class="complain-image">
+              <img src="<%= complaint.imageUrl %>" alt="complaint image" />
+            </div>
+            <div class="complain-body">
+              <p><%= complaint.description %></p>
+            </div>
+            <div class="complain-footer">
+              <div class="poster-image">
+                <img src="<%= complaint.posterImageUrl %>" alt="" />
+              </div>
+              <div class="author-desc">
+                <span class="name"><%= complaint.authorName %></span>
+                <span class="date"><%= complaint.date %></span>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </section>
+      <section class="load-more-section">
+        <button class="load-more">Load More</button>
+      </section>
+      <%- include('addComplaint') %> <!-- Include the modal here -->
+    </main>
+     
+    <script>
+      var modal = document.getElementById("modal");
+      var btn = document.querySelector(".add-complain button");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
