@@ -1,0 +1,274 @@
+/* aboutUs.css */
+
+/* General styles for the About Us page */
+body {
+    background-color: #E8F4F1; /* Light background color for the whole page */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 40px;
+}
+
+/* About Us section */
+.about-us {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    background-color: #ffffff; /* White background for content area */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.about-us h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50; /* Dark grey-blue for headings */
+}
+
+.about-us p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #34495e; /* Slightly lighter grey-blue for text */
+}
+
+.mission, .what-we-do {
+    margin-bottom: 30px;
+}
+
+.mission h2, .what-we-do h2 {
+    font-size: 2em;
+    color: #2c3e50; /* Dark grey-blue for section headings */
+    margin-bottom: 15px;
+}
+
+.what-we-do {
+    background-color: #ffffff; /* White background for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.what-we-do ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+    max-width: 700px;
+    text-align: left;
+}
+
+.what-we-do li {
+    font-size: 1.3em; /* Increased font size for list items */
+    margin-bottom: 20px; /* Increased spacing between items */
+    color: #34495e; /* Grey-blue for list items */
+}
+
+.what-we-do li strong {
+    color: #2980b9; /* Blue for emphasis */
+}
+
+/* Footer styles */
+.footer-1 {
+    background-color: #CCE0DC; /* Matching color for the footer */
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.footer-content {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-content p {
+    color: #51666F;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.footer-content h4 {
+    color: #211d1d;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.footer-content li {
+    margin-bottom: 6px;
+}
+
+.footer-content li a {
+    color: #1e1c1cc2;
+    font-size: 16px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icons a {
+    color: #5D7783;
+    font-size: 36px;
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+    .about-us {
+        padding: 20px;
+    }
+    
+    .what-we-do ul {
+        max-width: 100%;
+    }
+    
+    .footer-1 {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* aboutUs.css */
+
+/* General styles for the About Us page */
+body {
+    background-color: #E8F4F1; /* Light background color for the whole page */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 40px;
+}
+
+/* About Us section */
+.about-us {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    background-color: #ffffff; /* White background for content area */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.about-us h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50; /* Dark grey-blue for headings */
+}
+
+.about-us p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #34495e; /* Slightly lighter grey-blue for text */
+}
+
+.mission, .what-we-do {
+    margin-bottom: 30px;
+}
+
+.mission h2, .what-we-do h2 {
+    font-size: 2em;
+    color: #2c3e50; /* Dark grey-blue for section headings */
+    margin-bottom: 15px;
+}
+
+.what-we-do {
+    background-color: #ffffff; /* White background for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.what-we-do ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+    max-width: 700px;
+    text-align: left;
+}
+
+.what-we-do li {
+    font-size: 1.3em; /* Increased font size for list items */
+    margin-bottom: 20px; /* Increased spacing between items */
+    color: #34495e; /* Grey-blue for list items */
+}
+
+.what-we-do li strong {
+    color: #2980b9; /* Blue for emphasis */
+}
+
+/* Footer styles */
+.footer-1 {
+    background-color: #CCE0DC; /* Matching color for the footer */
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.footer-content {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-content p {
+    color: #51666F;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.footer-content h4 {
+    color: #211d1d;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.footer-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-content li {
+    margin-bottom: 6px;
+}
+
+.footer-content li a {
+    color: #1e1c1cc2;
+    font-size: 16px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icons a {
+    color: #5D7783;
+    font-size: 36px;
+}
+
+/* Responsive design */
+@media (max-width: 767px) {
+    .about-us {
+        padding: 20px;
+    }
+    
+    .what-we-do ul {
+        max-width: 100%;
+    }
+    
+    .footer-1 {
+        flex-direction: column;
+        align-items: center;
+    }
+}
