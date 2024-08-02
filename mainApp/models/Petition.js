@@ -7,6 +7,7 @@ const PetitionSchema = new mongoose.Schema({
     imageUrl: String,
     supports: { type: Number, default: 0 },
     opposes: { type: Number, default: 0 },
+    category: { type: String, required: true },
     comments: [{
         author: String,
         text: String,
@@ -15,4 +16,3 @@ const PetitionSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Petition', PetitionSchema);
-
