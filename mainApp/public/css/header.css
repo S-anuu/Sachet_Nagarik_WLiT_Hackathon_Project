@@ -1,112 +1,112 @@
-CSS body {
-          background-color: #cccccc;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          margin: 0;
-        }
-        
-        .container {
-          display: flex;
-          align-items: center;
-          justify-content:space-between ;
-        }
-        
-        .container img {
-          width: 140px;
-          height: 140px;
-          border-radius: 50%;
-        }
-        
-        .button button {
-          background-color: #5D7783;
-          color: #ffffff;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 5px;
-          cursor: pointer;
-          align-self: left;
-          float: right;
-        }
-        .box{
-          width: 500px;
-          height: 50px;
-          background-color:#ffffff;
-          border-radius: 30px;
-          display: flex;
-          align-items: center;
-          padding: 20px;
-        }
-        
-        .box > i {
-          font-size: 20px;
-          color: #777;
-        }
-        .box > input{
-          flex: 1;
-          height: 40px;
-          border-color: #777;
-          outline: none;
-          font-size: 18px;
-        }
-        
-        .nav-bar,
-        .nav-bar * {
-          box-sizing: border-box;
-        }
-        
-        .nav-bar {
-          border-style: solid;
-          border-color: var(--light-gray, #dbd8d8);
-          border-width: 1px;
-          padding: 21px 0px 21px 0px;
-          display: flex;
-          flex-direction: row;
-          gap: 70px;
-          row-gap: 0px;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-        
-        .home {
-          color: #000000;
-          text-align: left;
-          font-family: "Roboto-Medium", sans-serif;
-          font-size: 26px;
-          font-weight: 500;
-          position: relative;
-        }
-        
-        .contact-us {
-          color: #000000;
-          text-align: left;
-          font-family: "Roboto-Medium", sans-serif;
-          font-size: 26px;
-          font-weight: 500;
-          position: relative;
-        }
-        
-        .about-us {
-          color: #000000;
-          text-align: left;
-          font-family: "Roboto-Medium", sans-serif;
-          font-size: 26px;
-          font-weight: 500;
-          position: relative;
-        }
-        
-        .notification {
-          color: #000000;
-          text-align: left;
-          font-family: "Roboto-Medium", sans-serif;
-          font-size: 26px;
-          font-weight: 500;
-          position: relative;
-        }
-        
-        
-        
-        
-           
+body {
+  background-color: #ece8e8;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content:space-between ;
+}
+
+/* .container img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+} */
+
+.button button {
+  background-color: #5D7783;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: left;
+  float: right;
+  margin-right: 20px;
+}
+.box{
+  width: 500px;
+  height: 50px;
+  /* background-color:#ffffff; */
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.box > i {
+  font-size: 20px;
+  color: #777;
+}
+.box > input{
+  flex: 1;
+  height: 40px;
+  border-color: #777;
+  outline: none;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.nav-bar,
+.nav-bar * {
+  box-sizing: border-box;
+}
+
+.nav-bar {
+  border-style: solid;
+  border-color: var(--light-gray, #dbd8d8);
+  border-width: 1px;
+  padding: 21px 0px 21px 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  row-gap: 0px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.home {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  position: relative;
+}
+
+.contact-us {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  position: relative;
+}
+
+.about-us {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  position: relative;
+}
+
+.notification {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Medium", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  position: relative;
+}
+
+
+
+
+   
