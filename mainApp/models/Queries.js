@@ -1,14 +1,13 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const QueriesSchema = mongoose.Schema({
-    title : String,
-    postedBy : String,
-    topic: {
-        type : String,
-        enum : ['Transportation', 'Women Rights', 'Electricity', 'Drinking Water', 'Environment', 'Pollution', 'Natural Disasters']
-    },
-    description : String,
-    postedAt : { type : Date, default : Date.now }
-})
+const QuerySchema = mongoose.Schema({
+  title: String,
+  description: String,
+  author: String,
+  supportCount: { type: Number, default: 0 },
+  oppositionCount: { type: Number, default: 0 },
+  supportUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  oppositionUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+});
 
-module.exports = mongoose.model('Queries', QueriesSchema)
+module.exports = mongoose.model('Queries', QuerySchema);

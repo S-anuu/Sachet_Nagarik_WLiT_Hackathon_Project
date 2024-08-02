@@ -6,8 +6,7 @@ var Queries = require('../models/Queries')
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  const petitions = await Petitions.find()
-  res.render('index', { title: 'Sachet Nagarik', petitionlist: petitions });
+  res.render('index');
 });
 
 router.get('/petitions', async function(req, res, next) {
