@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var Complaints = require('../models/Complaints')
-var Petitions = require('../models/Petitions')
-var Queries = require('../models/Queries')
+var Petitions = require('../models/Petition')
+var Queries = require('../models/Query')
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  const petitions = await Petitions.find()
-  res.render('index', { title: 'Sachet Nagarik', petitionlist: petitions });
+  res.render('index');
 });
 
 router.get('/petitions', async function(req, res, next) {

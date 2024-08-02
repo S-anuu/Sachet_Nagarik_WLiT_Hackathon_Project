@@ -1,43 +1,39 @@
-var express = require('express');
-var router = express.Router();
-var petitions = require('../models/Petitions');
+const express = require('express');
+const router = express.Router();
+const petitionsController = require('../controllers/petitionsController');
+const multer = require('multer');
+const path = require('path');
 
-
-router.get('/add', function(req, res, next) {
-  res.render('addPetitions', { title: 'Add petitions'});
+// Multer setup
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
 });
+const upload = multer({ storage: storage });
 
-router.post('/save', function(req, res, next){
-    const petition = new petitions(req.body)
-    petition.save()
-    res.redirect('/')
-})
+// Route to display all petitions
+router.get('/', petitionsController.getAllPetitions);
 
-router.get('/edit/:_id', async function(req, res, next){
-    const petition = await petitions.findOne({_id: req.params._id})
-    res.render('editpetitions', {title: 'Edit Petitions', petition})
-    console.log(petition)   
-})
+// Route to display add petition page
+router.get('/add', petitionsController.getAddPetitionPage);
 
-router.post('/saveEdited/:_id',async function(req, res, next){
-    await petitions.updateOne({_id: req.params._id}, {$set: req.body})
-    // const currentIndex = db.books.getIndexes({_id: req.params._id})
-    // books.splice(currentIndex,1, {...req.body, _id:req.params._id})
-    res.redirect('/')
-})
+// Route to handle adding a new petition
+router.post('/add', upload.single('image'), petitionsController.addPetition);
 
-router.get('/delete/:_id',async function(req, res, next){
-    const result = await petitions.deleteOne({_id: req.params._id})
-    // const currentIndex = books.findIndex((book) => book._id === req.params._id)
-    // books.splice(currentIndex,1)
+// Route to handle supporting a petition
+router.post('/support/:id', petitionsController.supportPetition);
 
-    if (result.deletedCount === 1) {
-        console.log("Successfully deleted one petition.");
-      } else {
-        console.log("No documents matched the query. Deleted 0 petitions.");
-      }
+// Route to handle opposing a petition
+router.post('/oppose/:id', petitionsController.opposePetition);
 
-    res.redirect('/')
-})
+// Route to handle adding a new petition with image upload
+// router.post('/add', upload.single('image'), petitionsController.addPetition);
+
+// Route to handle adding a comment to a petition
+router.post('/:id/comments', petitionsController.addComment);
 
 module.exports = router;

@@ -1,43 +1,18 @@
-var express = require('express');
-var router = express.Router();
-var queries = require('../models/Queries');
+const express = require('express');
+const router = express.Router();
+const queryController = require('../controllers/queryController');
 
-/* GET home page. */
-router.get('/add', function(req, res, next) {
-  res.render('addQueries', { title: 'Add Queries'});
-});
+// Route to view queries
+router.get('/queries', queryController.getAllQueries);
 
-router.post('/save', function(req, res, next){
-    const queries = new queries(req.body)
-    queries.save()
-    res.redirect('/')
-})
+// Route to upvote a query
+router.post('/:id/upvote', queryController.upvoteQuery);
 
-router.get('/edit/:_id', async function(req, res, next){
-    const queries = await queries.findOne({_id: req.params._id})
-    res.render('editqueries', {title: 'Edit queries', queries})
-    console.log(queries)   
-})
+// Route to submit an answer
+router.post('/:id/answers', queryController.submitAnswer);
 
-router.post('/saveEdited/:_id',async function(req, res, next){
-    await queries.updateOne({_id: req.params._id}, {$set: req.body})
-    // const currentIndex = db.books.getIndexes({_id: req.params._id})
-    // books.splice(currentIndex,1, {...req.body, _id:req.params._id})
-    res.redirect('/')
-})
-
-router.get('/delete/:_id',async function(req, res, next){
-    const result = await queries.deleteOne({_id: req.params._id})
-    // const currentIndex = books.findIndex((book) => book._id === req.params._id)
-    // books.splice(currentIndex,1)
-
-    if (result.deletedCount === 1) {
-        console.log("Successfully deleted one queries.");
-      } else {
-        console.log("No documents matched the queries. Deleted 0 queries.");
-      }
-
-    res.redirect('/')
-})
+// Route to add a new query
+router.post('/', queryController.addQuery);
 
 module.exports = router;
+
