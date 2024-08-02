@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Complaints = require('../models/Complaints')
 var Petitions = require('../models/Petitions')
-var Queries = require('../models/Queries')
+var Queries = require('../models/Query')
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
