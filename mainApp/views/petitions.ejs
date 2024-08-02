@@ -1,1 +1,54 @@
-<h1>Petitions</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/petition.css">
+</head>
+<body>
+    <!-- Display category title if available -->
+    <% if (category) { %>
+        <h1><%= category %> Petitions</h1>
+    <% } else { %>
+        <h1>All Petitions</h1>
+    <% } %>
+
+    <!-- Loop through and display each petition -->
+    <% petitions.forEach(petition => { %>
+        <div class="main-petition">
+            <img class="image-292" src="image-2920.png" />
+            <div class="frame-34004">
+                <div class="frame-34003">
+                    <div class="group-34085">
+                        <div class="_30-july-2024"><%= petition.date.toDateString() %></div>
+                        <div class="petition-title"><%= petition.title %></div>
+                    </div>
+                    <div class="group-34086">
+                        <div class="description"><%= petition.description %></div>
+                        <div class="read-more">Read More</div>
+                    </div>
+                    <div class="group-34087">
+                        <div class="support">
+                            <img class="image-293" src="image-2930.png" />
+                            <div class="support2">
+                                <form action="/petitions/support/<%= petition._id %>" method="POST" style="display:inline;">
+                                    <button type="submit">Support (<%= petition.supportCount %>)</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="critic">
+                            <div class="critic2">
+                                <form action="/petitions/oppose/<%= petition._id %>" method="POST" style="display:inline;">
+                                    <button type="submit">Oppose (<%= petition.opposeCount %>)</button>
+                                </form>
+                            </div>
+                            <img class="image-294" src="image-2940.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</body>
+</html>
