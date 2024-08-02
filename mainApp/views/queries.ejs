@@ -3,72 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Queries</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Query Forum</title>
+    
+    <link rel="stylesheet" href="/css/query.css">
 </head>
 <body>
-    <header>
-        <h1>Queries</h1>
-        <nav>
-            <a href="/">Home</a>
-            <% if (typeof user !== 'undefined' && user) { %>
-                <a href="/users/profile">Profile</a>
-                <a href="/users/logout">Logout</a>
-            <% } else { %>
-                <a href="/users/login">Login</a>
-                <a href="/users/register">Register</a>
-            <% } %>
-        </nav>
-    </header>
+    <div class="container">
+        <h1>Query Forum</h1>
+        
+        <div class="query-box">
+            <h2>Women Rights: What is the status of women's rights in Nepal?I've heard that Nepal has made progress in women's rights, but what specific advancements or challenges exist?</h2>
+            <div class="playbook-button">
+                <img src="/images/avdalyan-DQjWG8NBGWg-unsplash.jpg" alt="User 1">
+                <img src="/images/miley-guinn-8M-5jxZ4544-unsplash.jpg" alt="User 2">
+                <img src="/images/rahabi-khan-eNafqf_0ZWQ-unsplash.jpg" alt="User 3">
+                <span>View Playbook</span>
+            </div>
+            <p>Nepal has made significant strides in women's rights, but challenges remain. Some key points:
+
+                1. The 2015 Constitution guarantees equal rights to women and prohibits gender-based discrimination.
+                2. Nepal has achieved near gender parity in primary education enrollment.
+                3. The country has mandated 33% representation of women in the national parliament.
+                4. However, issues like child marriage, domestic violence, and the practice of Chhaupadi (isolating menstruating women) persist, especially in rural areas.
+                5. Women's participation in the formal workforce remains low, at around 26%.
     
-    <main>
-        <section>
-            <h2>Queries</h2>
-            <% if (typeof queries !== 'undefined' && queries.length === 0) { %>
-                <p>No queries available.</p>
-            <% } else { %>
-                <ul>
-                    <% queries.forEach(query => { %>
-                        <li>
-                            <h3><%= query.title %></h3>
-                            <p><%= query.description %></p>
-                            <p>Submitted by: <%= query.author %></p>
-                            <p>Support Count: <%= query.supportCount %></p>
-                            <p>Opposition Count: <%= query.oppositionCount %></p>
-                            
-                            <% if (typeof user !== 'undefined' && user) { %>
-                                <form action="/queries/support/<%= query._id %>" method="POST">
-                                    <button type="submit" <% if (query.supportUsers.includes(user._id)) { %> disabled <% } %>>Support</button>
-                                </form>
-                                <form action="/queries/opposition/<%= query._id %>" method="POST">
-                                    <button type="submit" <% if (query.oppositionUsers.includes(user._id)) { %> disabled <% } %>>Oppose</button>
-                                </form>
-                            <% } %>
-                        </li>
-                    <% }) %>
-                </ul>
-            <% } %>
-        </section>
+                While legal protections have improved, cultural norms and implementation of laws continue to be obstacles in achieving full gender equality in Nepal.</p>
+            <div class="actions">
+                <button>Upvote</button>
+                <button>Answer</button>
+                <span>6 months ago</span>
+            </div>
+            <div class="add-answer">
+                <textarea placeholder="Add your answer..."></textarea>
+                <button type="submit">Submit Answer</button>
+            </div>
+        </div>
 
-        <section>
-            <h2>Add New Query</h2>
-            <% if (typeof user !== 'undefined' && user) { %>
-                <form action="/queries/save" method="POST">
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" required>
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
-                    <button type="submit">Submit</button>
-                </form>
-            <% } else { %>
-                <p>Please <a href="/users/login">log in</a> to add a new query.</p>
-            <% } %>
-        </section>
-    </main>
+        <div class="query-box">
+            <h2>General: What is the gender pay gap?I've heard about the gender pay gap, but what exactly does it mean and does it still exist today?</h2>
 
-    <footer>
-        <p>&copy; <%= new Date().getFullYear() %> Query Management System</p>
-    </footer>
+            <div class="playbook-button">
+                <img src="/images/avdalyan-DQjWG8NBGWg-unsplash.jpg" alt="User 1">
+                <img src="/images/miley-guinn-8M-5jxZ4544-unsplash.jpg" alt="User 2">
+                <img src="images/rahabi-khan-eNafqf_0ZWQ-unsplash.jpg" alt="User 3">
+                <span>View Playbook</span>
+            </div>
+
+            <p>The gender pay gap refers to the difference in average earnings between men and women in the workforce. It still exists in many countries today and in Nepal too. For example, in the US, women earn about 82 cents for every dollar earned by men in comparable positions. This gap is influenced by factors such as discrimination, occupational segregation, and differences in work hours due to family responsibilities.</p>
+            <div class="actions">
+                <button>Upvote</button>
+                <button>Answer</button>
+                <span>2 months ago</span>
+            </div>
+            <div class="add-answer">
+                <textarea placeholder="Add your answer..."></textarea>
+                <button type="submit">Submit Answer</button>
+            </div>
+        </div>
+
+        <div class="add-query">
+            <h2>Add a New Query</h2>
+            <input type="text" placeholder="Enter your question...">
+            <textarea placeholder="Provide more details (optional)"></textarea>
+            <button type="submit">Submit Query</button>
+        </div>
+    </div>
 </body>
 </html>
-
