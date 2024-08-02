@@ -1,45 +1,37 @@
 const Petition = require('../models/Petition');
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
 
-// Function to get all petitions
 exports.getAllPetitions = async (req, res) => {
     try {
         const petitions = await Petition.find();
         res.render('petitions', { petitions });
     } catch (err) {
         console.error(err);
-        res.status(500).send("Server Error");
+        res.status(500).send('Server Error');
     }
 };
 
-// Function to render the add petition page
 exports.getAddPetitionPage = (req, res) => {
-    res.render('addPetitions', {title:"Add Petitions"});
+    res.render('addPetitions', { title: "Add Petitions" });
 };
 
-// Function to handle adding a new petition
 exports.addPetition = async (req, res) => {
     try {
         const { title, description, subTitle } = req.body;
         let imagePath = '';
         
-        // Handle file upload
         if (req.file) {
             imagePath = `/uploads/${req.file.filename}`;
-            image = req.file.filename
-        }
-        else{
-            image = imagePath
         }
 
         const newPetition = new Petition({
             title,
-            subTitle,
+            subtitle: subTitle, // Ensure field names match
             description,
-            imageUrl: image
+            imageUrl: imagePath
         });
-        console.log(newPetition)
+
         await newPetition.save();
         res.redirect('/petitions');
     } catch (err) {
@@ -48,38 +40,25 @@ exports.addPetition = async (req, res) => {
     }
 };
 
-// Get All Petitions
-exports.getAllPetitions = async (req, res) => {
+exports.supportPetition = async (req, res) => {
     try {
-        const petitions = await Petition.find();
-        res.render('petitions', { petitions });
+        const petitionId = req.params.id;
+        await Petition.findByIdAndUpdate(petitionId, { $inc: { supports: 1 } });
+        res.json({ success: true, newSupportCount: (await Petition.findById(petitionId)).supports });
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
     }
 };
 
-// Function to handle supporting a petition
-exports.supportPetition = async (req, res) => {
-    try {
-        const petitionId = req.params.id;
-        await Petition.findByIdAndUpdate(petitionId, { $inc: { supporters: 1 } });
-        res.redirect('/petitions');
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Server Error");
-    }
-};
-
-// Function to handle opposing a petition
 exports.opposePetition = async (req, res) => {
     try {
         const petitionId = req.params.id;
-        await Petition.findByIdAndUpdate(petitionId, { $inc: { opposers: 1 } });
-        res.redirect('/petitions');
+        await Petition.findByIdAndUpdate(petitionId, { $inc: { opposes: 1 } });
+        res.json({ success: true, newOpposeCount: (await Petition.findById(petitionId)).opposes });
     } catch (err) {
         console.error(err);
-        res.status(500).send("Server Error");
+        res.status(500).send('Server Error');
     }
 };
 

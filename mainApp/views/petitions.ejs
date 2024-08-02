@@ -59,80 +59,107 @@
     </div>
 
     <script>
-        function toggleDescription(id) {
-            var desc = document.getElementById('desc-' + id);
-            var link = event.target;
+        
+    function toggleDescription(id) {
+        var desc = document.getElementById('desc-' + id);
+        var link = event.target;
 
-            if (desc.style.maxHeight === 'none') {
-                desc.style.maxHeight = '100px';
-                link.textContent = 'Read More';
+        if (desc.style.maxHeight === 'none') {
+            desc.style.maxHeight = '100px';
+            link.textContent = 'Read More';
+        } else {
+            desc.style.maxHeight = 'none';
+            link.textContent = 'Read Less';
+        }
+    }
+
+    function supportPetition(id) {
+        fetch('/petitions/' + id + '/support', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
             } else {
-                desc.style.maxHeight = 'none';
-                link.textContent = 'Read Less';
+                return response.text().then(text => {
+                    throw new Error(`Server responded with status ${response.status}: ${text}`);
+                });
             }
-        }
-
-        function supportPetition(id) {
-            fetch('/petitions/' + id + '/support', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('support-count-' + id).textContent = data.newSupportCount;
-                } else {
-                    alert('Failed to support petition.');
-                }
-            });
-        }
-
-        function opposePetition(id) {
-            fetch('/petitions/' + id + '/oppose', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('oppose-count-' + id).textContent = data.newOpposeCount;
-                } else {
-                    alert('Failed to oppose petition.');
-                }
-            });
-        }
-
-        function addComment(petitionId) {
-            var commentText = document.getElementById('comment-text-' + petitionId).value;
-            if (commentText.trim() === '') {
-                alert('Please enter a comment.');
-                return;
+        })
+        .then(data => {
+            if (data.success) {
+                document.getElementById('support-count-' + id).textContent = data.newSupportCount;
+            } else {
+                alert('Failed to support petition.');
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    }
 
-            fetch('/petitions/' + petitionId + '/comments', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ text: commentText })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    var commentList = document.getElementById('comment-list-' + petitionId);
-                    var newComment = document.createElement('li');
-                    newComment.innerHTML = `<strong>${data.comment.author}:</strong> ${data.comment.text}`;
-                    commentList.appendChild(newComment);
-                    document.getElementById('comment-text-' + petitionId).value = '';
-                } else {
-                    alert('Failed to add comment.');
-                }
-            });
+    function opposePetition(id) {
+        fetch('/petitions/' + id + '/oppose', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.text().then(text => {
+                    throw new Error(`Server responded with status ${response.status}: ${text}`);
+                });
+            }
+        })
+        .then(data => {
+            if (data.success) {
+                document.getElementById('oppose-count-' + id).textContent = data.newOpposeCount;
+            } else {
+                alert('Failed to oppose petition.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    }
+
+    function addComment(petitionId) {
+        var commentText = document.getElementById('comment-text-' + petitionId).value;
+        if (commentText.trim() === '') {
+            alert('Please enter a comment.');
+            return;
         }
+
+        fetch('/petitions/' + petitionId + '/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ text: commentText })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                var commentList = document.getElementById('comment-list-' + petitionId);
+                var newComment = document.createElement('li');
+                newComment.innerHTML = `<strong>${data.comment.author}:</strong> ${data.comment.text}`;
+                commentList.appendChild(newComment);
+                document.getElementById('comment-text-' + petitionId).value = '';
+            } else {
+                alert('Failed to add comment.');
+            }
+        });
+    }
+</script>
+
     </script>
 </body>
 </html>
