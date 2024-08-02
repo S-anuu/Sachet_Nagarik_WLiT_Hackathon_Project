@@ -1,53 +1,143 @@
 .petition-options,
 .petition-options * {
-  box-sizing: border-box;
+ box-sizing: border-box;
 }
 .petition-options {
-  background: #d88c9a;
-  height: 102px;
-  position: relative;
-  overflow: hidden;
+ background: #d88c9a;
+ height: 102px;
+ position: relative;
+ overflow: hidden;
 }
 .frame-34007 {
-  display: flex;
-  flex-direction: row;
-  gap: 65px;
-  row-gap: 0px;
-  align-items: center;
-  justify-content: flex-start;
-  position: absolute;
-  left: calc(50% - 450px);
-  top: calc(50% - 15px);
+ display: flex;
+ flex-direction: row;
+ gap: 65px;
+ row-gap: 0px;
+ align-items: center;
+ justify-content: flex-start;
+ position: absolute;
+ left: calc(50% - 450px);
+ top: calc(50% - 15px);
 }
 .women-s-right {
-  color: #f7f1f1;
-  text-align: left;
-  font-family: "Roboto-SemiBold", sans-serif;
-  font-size: 26px;
-  font-weight: 600;
-  position: relative;
+ color: #f7f1f1;
+ text-align: left;
+ font-family: "Roboto-SemiBold", sans-serif;
+ font-size: 26px;
+ font-weight: 600;
+ position: relative;
 }
 .transportation {
-  color: #f7f1f1;
-  text-align: left;
-  font-family: "Roboto-SemiBold", sans-serif;
-  font-size: 26px;
-  font-weight: 600;
-  position: relative;
+ color: #f7f1f1;
+ text-align: left;
+ font-family: "Roboto-SemiBold", sans-serif;
+ font-size: 26px;
+ font-weight: 600;
+ position: relative;
 }
 .drinking-water {
-  color: #f7f1f1;
-  text-align: left;
-  font-family: "Roboto-SemiBold", sans-serif;
-  font-size: 26px;
-  font-weight: 600;
-  position: relative;
+ color: #f7f1f1;
+ text-align: left;
+ font-family: "Roboto-SemiBold", sans-serif;
+ font-size: 26px;
+ font-weight: 600;
+ position: relative;
 }
 .climate-change {
-  color: #f7f1f1;
-  text-align: left;
-  font-family: "Roboto-SemiBold", sans-serif;
-  font-size: 26px;
-  font-weight: 600;
-  position: relative;
+ color: #f7f1f1;
+ text-align: left;
+ font-family: "Roboto-SemiBold", sans-serif;
+ font-size: 26px;
+ font-weight: 600;
+ position: relative;
+}
+
+
+/* petition options */
+
+
+.action-menu {
+ max-width: 800px;
+ margin: 0 auto;
+ font-family: Arial, sans-serif;
+ margin-top: 50px;
+ margin-bottom: 50px;
+}
+
+
+.top-actions {
+ display: flex;
+ justify-content: space-between;
+ list-style-type: none;
+ padding: 0;
+ margin-bottom: 20px;
+}
+
+
+.top-actions li {
+ flex-grow: 1;
+ margin: 0 10px;
+}
+
+
+button {
+ background-color: white;
+ border: 2px solid #6c757d;
+ border-radius: 15px;
+ padding: 10px 20px;
+ font-size: 18px;
+ font-weight: 800;
+ text-align: center;
+ width: 100%;
+ cursor: pointer;
+}
+
+
+.main-action button {
+ padding: 15px 30px;
+ font-size: 18px;
+}
+
+
+
+
+/* growing bannar */
+
+
+.metrics-banner {
+ background-color: #d8a0a6;
+ color: white;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 10px 0;
+ font-family: Arial, sans-serif;
+}
+
+
+.metric-item {
+ display: flex;
+ align-items: center;
+ margin: 0 20px;
+}
+
+
+.metric-number {
+ font-size: 24px;
+ font-weight: bold;
+ margin-right: 10px;
+}
+
+
+.metric-label {
+ font-size: 16px;
+}
+
+
+.separator {
+ width: 8px;
+ height: 8px;
+ background-color: white;
+ border-radius: 50%;
+ margin: 0 20px;
 }

@@ -82,3 +82,15 @@ exports.addComment = async (req, res) => {
         res.status(500).json({ success: false, message: err.message });
     }
 };
+
+// Function to get limited petitions
+exports.getLimitedPetitions = async (req, res) => {
+    try {
+        // Fetch only 2 petitions
+        const petitions = await Petition.find().limit(2);
+        res.render('petitions', { petitionlist: petitions });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+};
