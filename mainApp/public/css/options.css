@@ -1,0 +1,53 @@
+.petition-options,
+.petition-options * {
+  box-sizing: border-box;
+}
+.petition-options {
+  background: #d88c9a;
+  height: 102px;
+  position: relative;
+  overflow: hidden;
+}
+.frame-34007 {
+  display: flex;
+  flex-direction: row;
+  gap: 65px;
+  row-gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: calc(50% - 450px);
+  top: calc(50% - 15px);
+}
+.women-s-right {
+  color: #f7f1f1;
+  text-align: left;
+  font-family: "Roboto-SemiBold", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  position: relative;
+}
+.transportation {
+  color: #f7f1f1;
+  text-align: left;
+  font-family: "Roboto-SemiBold", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  position: relative;
+}
+.drinking-water {
+  color: #f7f1f1;
+  text-align: left;
+  font-family: "Roboto-SemiBold", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  position: relative;
+}
+.climate-change {
+  color: #f7f1f1;
+  text-align: left;
+  font-family: "Roboto-SemiBold", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  position: relative;
+}
