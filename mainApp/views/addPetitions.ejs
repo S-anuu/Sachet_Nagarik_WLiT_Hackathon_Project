@@ -9,22 +9,26 @@
 
     <body>
 		<h1><%= title %></h1>    
-        <form method="post" action="/books/save">
+        <form method="post" action="/petitions/add">
             <div class="form-group">
                 <label for="name">Title:</label>
                 <input type="string" class="form-control" id="title" name="title" placeholder="Enter title">
             </div>
             <div class="form-group">
-                <label for="college">Author:</label>
-                <input type="string" class="form-control" id="author" name="author" placeholder="Enter author name">
+                <label for="college">Subtitle:</label>
+                <input type="string" class="form-control" id="subtitle" name="subtitle" placeholder="Enter author name">
             </div>
             <div class="form-group">
                 <label for="course">Description:</label>
                 <input type="string" class="form-control" id="description" name="description" placeholder="Enter description">
             </div>
+            <!-- <div class="form-group">
+                <label for="course">Category:</label>
+                <input type="string" class="form-control" id="category" name="category" placeholder="Enter description">
+            </div> -->
             <div class="form-group">
-                <label for="semester">Genre:</label>
-                <input type="string" class="form-control" id="genre" name="genre" placeholder="Enter genre">
+                <label for="semester">Image:</label>
+                <input type="file" class="form-control-file" id="imageURL" name="imageURL" placeholder="Enter genre">
             </div>
             <button type="submit" class="btn btn-primary" name="action">Submit</button>
         </form>

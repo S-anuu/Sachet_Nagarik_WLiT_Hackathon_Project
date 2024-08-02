@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/petition-detail.css">
+</head>
+<body>
+    <div class="petition-box">
+        <div class="image-container">
+            <img src="/images/mensuration.png" alt="mensuration">
+        </div>
+        <div class="content">
+            <h2><%= petition.title %></h2>
+            <p><%= petition.description %></p>
+            <div class="stats">
+                <div class="stat">
+                    <span>👥</span>
+                    <span><%= petition.supportCount %></span>
+                </div>
+                <div class="stat">
+                    <span>✋</span>
+                    <span><%= petition.opposeCount %></span>
+                </div>
+            </div>
+            <div class="comments">
+                <h3>Comments</h3>
+                <% petition.comments.forEach(comment => { %>
+                    <div class="comment">
+                        <strong><%= comment.author %></strong>
+                        <p><%= comment.content %></p>
+                        <small><%= comment.date.toDateString() %></small>
+                    </div>
+                <% }) %>
+            </div>
+            <form action="/petition/<%= petition._id %>/comment" method="POST">
+                <h3>Add a Comment</h3>
+                <label for="author">Name:</label>
+                <input type="text" id="author" name="author" required>
+                <label for="content">Comment:</label>
+                <textarea id="content" name="content" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

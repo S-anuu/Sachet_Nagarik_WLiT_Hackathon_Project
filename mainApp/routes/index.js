@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Complaints = require('../models/Complaints')
-var Petitions = require('../models/Petitions')
+var Petitions = require('../models/Petition')
 var Queries = require('../models/Query')
 
 /* GET home page. */

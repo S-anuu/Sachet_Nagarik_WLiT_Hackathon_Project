@@ -1,46 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const Petition = require('../models/Petitions');
+const petitionsController = require('../controllers/petitionsController');
+const multer = require('multer');
+const path = require('path');
+
+// Multer setup
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+const upload = multer({ storage: storage });
 
 // Route to display all petitions
-router.get('/', async (req, res, next) => {
-    try {
-        const petitions = await Petition.find();
-        res.render('petitions', { title: 'Petitions', petitions });
-    } catch (err) {
-        next(err);
-    }
-});
+router.get('/', petitionsController.getAllPetitions);
 
-// Route to display petitions by category
-router.get('/category/:category', async (req, res, next) => {
-    try {
-        const category = req.params.category;
-        const petitions = await Petition.find({ category }); // Assuming the category field exists in your model
-        res.render('petitions', { title: 'Petitions', petitions, category });
-    } catch (err) {
-        next(err);
-    }
-});
+// Route to display add petition page
+router.get('/add', petitionsController.getAddPetitionPage);
 
-// Route to support a petition
-router.post('/support/:id', async (req, res, next) => {
-    try {
-        await Petition.findByIdAndUpdate(req.params.id, { $inc: { supportCount: 1 } });
-        res.redirect('back'); // Redirect back to the previous page
-    } catch (err) {
-        next(err);
-    }
-});
+// Route to handle adding a new petition
+router.post('/add', upload.single('image'), petitionsController.addPetition);
 
-// Route to oppose a petition
-router.post('/oppose/:id', async (req, res, next) => {
-    try {
-        await Petition.findByIdAndUpdate(req.params.id, { $inc: { opposeCount: 1 } });
-        res.redirect('back'); // Redirect back to the previous page
-    } catch (err) {
-        next(err);
-    }
-});
+// Route to handle supporting a petition
+router.post('/support/:id', petitionsController.supportPetition);
+
+// Route to handle opposing a petition
+router.post('/oppose/:id', petitionsController.opposePetition);
+
+// Route to handle adding a new petition with image upload
+// router.post('/add', upload.single('image'), petitionsController.addPetition);
+
+// Route to handle adding a comment to a petition
+router.post('/:id/comments', petitionsController.addComment);
 
 module.exports = router;
