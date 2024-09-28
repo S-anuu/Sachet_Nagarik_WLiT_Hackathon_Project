@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sachet Nagarik</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/info-banner.css">
+    <link rel="stylesheet" href="/css/options.css">
+    <link rel="stylesheet" href="/css/indexPetition.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+    <div class="landing-page">
+        <!-- Nav-bar -->
+        <div class="container">
+            <div class="logo">
+                <img src="/images/logo-name0.png.png" alt="" height="140px" width="140px">
+            </div>
+
+            <div class="box">
+                <input type="text" placeholder="Search Bar">
+            </div>
+            <div class="button">
+                <button class="button">Sign In</button>
+            </div>
+        </div>
+
+        <div class="nav-bar">
+            <div class="home">Home</div>
+            <div class="contact-us">Contact us</div>
+            <div class="about-us">About us</div>
+            <div class="notification">Notification</div>
+        </div>
+
+        <br>
+
+        <!-- Sachet Nagarik Banner -->
+        <div class="info-bannar">
+            <div class="frame-33989">
+                <div class="group-34080">
+                    <div class="rectangle-1289"></div>
+                    <img class="rectangle-1290" src="/images/Rectangle 1290.png" />
+                    <div class="group-34079">
+                        <div class="civic">CIVIC</div>
+                        <div class="engagement">ENGAGEMENT</div>
+                    </div>
+                </div>
+                <div class="frame-33988">
+                    <div class="frame-33984">
+                        <div class="sachet-nagarik">SACHET NAGARIK</div>
+                        <div class="engage-report-resolve">Engage.Report.Resolve</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Petition Options -->
+        <div class="petition-options">
+            <div class="frame-34007">
+                <a href="/category/womens-right">
+                    <div class="women-s-right">Women's Rights</div>
+                </a>
+                <a href="/category/transportation">
+                    <div class="transportation">Transportation</div>
+                </a>
+                <a href="/category/drinking-water">
+                    <div class="drinking-water">Drinking Water</div>
+                </a>
+                <a href="/category/climate-change">
+                    <div class="climate-change">Climate Change</div>
+                </a>
+            </div>
+        </div>
+        <br />
+
+        <!-- Petition Content -->
+        <div class="petition-content">
+            <% petitionlist.forEach(petition => { %>
+            <div class="petition-box">
+                <div class="image-container">
+                    <% if (petition.imageUrl) { %>
+                        <img src="<%= petition.imageUrl %>" alt="Petition Image">
+                    <% } else { %>
+                        <img src="/images/default.png" alt="Default Image">
+                    <% } %>
+                </div>
+                <div class="content">
+                    <h2><%= petition.title %></h2>
+                    <br>
+                    <div class="add-text"><%= petition.subtitle %></div>
+                    <br>
+                    <p id="desc-<%= petition._id %>">
+                        <%= petition.description.substring(0, 100) %>...
+                        <a href="#" onclick="toggleDescription('<%= petition._id %>')">Read More</a>
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span>👥</span>
+                            <span><%= petition.supports %></span>
+                        </div>
+                        <div class="stat">
+                            <span>✋</span>
+                            <span><%= petition.opposes %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+
+        <!-- Action Menu -->
+        <nav class="action-menu">
+            <ul class="top-actions">
+                <li><button>Petitions</button></li>
+                <li><button>Complaints</button></li>
+                <li><button>Queries</button></li>
+                <li><button>Polls</button></li>
+            </ul>
+            <div class="main-action">
+                <button>Community Event</button>
+            </div>
+        </nav>
+
+        <!-- Banner -->
+        <div class="metrics-banner">
+            <div class="metric-item">
+                <span class="metric-number">2,456</span>
+                <span class="metric-label">users and growing</span>
+            </div>
+            <div class="separator"></div>
+            <div class="metric-item">
+                <span class="metric-number">100</span>
+                <span class="metric-label">complaints posted</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-1">
+            <div class="footer-content">
+                <p>सचेत <br> नागरिक</p>
+            </div>
+            <div class="footer-content">
+                <h4>Quick Links</h4>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-us">About us</a></li>
+                <li><a href="/contact-us">Contact us</a></li>
+            </div>
+            <div class="footer-content">
+                <h4>Connect with us</h4>
+                <div class="icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleDescription(id) {
+            var desc = document.getElementById('desc-' + id);
+            var link = event.target;
+
+            if (desc.textContent.includes('Read More')) {
+                // Expand description
+                desc.textContent = desc.textContent.replace('Read More', 'Read Less');
+                fetch(`/petitions/${id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            desc.innerHTML = `${data.petition.description} <a href="#" onclick="toggleDescription('${id}')">Read Less</a>`;
+                        }
+                    });
+            } else {
+                // Collapse description
+                desc.innerHTML = `${desc.textContent.substring(0, 100)}... <a href="#" onclick="toggleDescription('${id}')">Read More</a>`;
+            }
+        }
+    </script>
+</body>
+
+</html>

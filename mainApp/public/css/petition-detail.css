@@ -1,0 +1,23 @@
+.petition-box {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 20px auto;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+.content {
+    padding: 20px;
+}
+.comments {
+    margin-top: 20px;
+}
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}

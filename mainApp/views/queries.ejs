@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Forum</title>
+    <link rel="stylesheet" href="/css/query.css">
+</head>
+<body>
+    <div class="container">
+        <% querieslist.forEach(query => { %>
+        <div class="query-box">
+            <h2><%= query.title %></h2>
+            <div class="playbook-button">
+                <% if (query.users && query.users.length > 0) { %>
+                    <% query.users.forEach(user => { %>
+                        <img src="/images/<%= user.image %>" alt="<%= user.name %>">
+                    <% }) %>
+                <% } else { %>
+                    <!-- Display demo images -->
+                    <img src="/images/rahabi-khan-eNafqf_0ZWQ-unsplash.jpg" alt="Demo User 1" class="demo-image">
+                    <img src="/images/miley-guinn-8M-5jxZ4544-unsplash.jpg" alt="Demo User 2" class="demo-image">
+                    <img src="/images/avdalyan-DQjWG8NBGWg-unsplash.jpg" alt="Demo User 3" class="demo-image">
+                <% } %>
+                <span>View Playbook</span>
+            </div>
+            <p><%= query.description %></p>
+            <div class="actions">
+                <form action="/queries/<%= query._id %>/upvote" method="POST">
+                    <button type="submit">Upvote</button>
+                </form>
+                <button onclick="document.getElementById('answer-form-<%= query._id %>').style.display='block'">Answer</button>
+                <span><%= query.timeAgo %></span>
+            </div>
+            <div class="add-answer" id="answer-form-<%= query._id %>" style="display:none;">
+                <form action="/queries/<%= query._id %>/answers" method="POST">
+                    <textarea name="answer" placeholder="Add your answer..."></textarea>
+                    <button type="submit">Submit Answer</button>
+                </form>
+            </div>
+            <% if (query.answers && query.answers.length > 0) { %>
+                <div class="answers-section">
+                    <% query.answers.forEach(answer => { %>
+                        <div class="answer-box">
+                            <p><%= answer.text %></p>
+                            <span><%= new Date(answer.date).toLocaleDateString() %></span>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+        <% }); %>
+
+        <div class="add-query">
+            <h2>Add a New Query</h2>
+            <form action="/queries" method="POST">
+                <input type="text" name="title" placeholder="Enter your question..." required>
+                <textarea name="description" placeholder="Provide more details (optional)"></textarea>
+                <div class="category-select">
+                    <label for="category">Choose a Category:</label>
+                    <select name="category" id="category" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="womens-rights">Women's Rights</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="climate-change">Climate Change</option>
+                        <option value="drinking-water">Drinking Water</option>
+                    </select>
+                </div>
+                <button type="submit">Submit Query</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/css/addPetitions.css' />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    </head>
+
+    <body><div>
+
+
+		<h1><%= title %></h1>    
+        <form method="post" action="/petitions/add">
+            <div class="form-group">
+                <label for="name">Title:</label>
+                <input type="string" class="form-control" id="title" name="title" placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <label for="college">Subtitle:</label>
+                <input type="string" class="form-control" id="subtitle" name="subtitle" placeholder="Enter author name">
+            </div>
+            <div class="form-group">
+                <label for="course">Description:</label>
+                <input type="string" class="form-control" id="description" name="description" placeholder="Enter description">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Women's Rights">Women's Rights</option>
+                    <option value="Climate Change">Climate Change</option>
+                    <option value="Drinking Water">Drinking Water</option>
+                </select>
+            </div>
+            <!-- <div class="form-group">
+                <label for="course">Category:</label>
+                <input type="string" class="form-control" id="category" name="category" placeholder="Enter description">
+            </div> -->
+            <div class="form-group">
+                <label for="semester">Image:</label>
+                <input type="file" class="form-control-file" id="imageURL" name="imageURL" placeholder="Enter genre">
+            </div>
+            <button type="submit" class="btn btn-primary" name="action">Submit</button>
+        </form>
+    </div>
+    </body>
+</html>
